@@ -7,7 +7,13 @@
     --white: #ffffff;
 }
 
-/* Estilo Base (Mobile First) */
+/* 1. RESET E GOVERNANÇA DE BOX MODEL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Crucial para não quebrar no celular */
+}
+
 body {
     background-color: var(--bg-light);
     font-family: 'Inter', sans-serif;
@@ -15,90 +21,60 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* No celular, reduzimos o respiro vertical e adicionamos horizontal */
-    padding: 20px 15px; 
-    overflow-x: hidden; /* Segurança contra quebras de layout lateral */
+    padding: 20px 15px; /* Respiro lateral para o mobile */
+    overflow-x: hidden; 
 }
 
-/* Ajuste para Desktop (Telas maiores que 900px) */
-@media (min-width: 900px) {
-    body {
-        padding: 40px 0; /* Aqui voltamos ao respiro maior que você sugeriu */
-    }
-}
+/* 2. CABEÇALHO DA MARCA */
 .marca-topo {
-    width: 95%;
-    max-width: 1100px;      /* Mesma largura do seu main para alinhar as bordas */
-    margin-bottom: 30px;    /* Espaço entre a marca e a calculadora */
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 25px;
+    text-align: center; /* Mobile First: Centralizado */
 }
 
 .marca-topo h1 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 900;
     color: var(--text-dark);
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-/* Ajuste no Título Interno (Cálculo de TMB) */
-.header-interno h2 {
-    font-size: 2rem;
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 5px;
-    color: var(--text-dark);
-}
-
+/* 3. ESTRUTURA PRINCIPAL (GRID RESPONSIVO) */
 main {
     display: grid;
-    grid-template-columns: 400px 1fr; /* Largura fixa para o form, resto para o resultado */
-    gap: 30px;
-    width: 95%;
+    grid-template-columns: 1fr; /* Mobile First: Uma coluna */
+    gap: 20px;
+    width: 100%;
     max-width: 1100px;
 }
 
-@media (max-width: 900px) {
-    main {
-        grid-template-columns: 1fr; /* Muda para UMA coluna só */
-        margin: 20px 0;
-    }
-
-    #resultado {
-        padding: 40px 20px; /* Reduz o respiro para caber melhor no celular */
-    }
-
-    #get-valor {
-        font-size: 5rem; /* Diminui o número gigante para não transbordar */
-    }
-    .marca-topo {
-    text-align: center; /* Centraliza a marca no celular para ficar mais harmônico */
-    }
-}
-
-/* PAINEL DA ESQUERDA (FORMULÁRIO) */
+/* 4. PAINEL DE ENTRADA */
 #formulario-saude {
     background-color: var(--panel-gray);
-    padding: 40px;
+    padding: 30px 20px;
     border-radius: 24px;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-@media (max-width: 500px) {
-    .grid-duplo {
-        grid-template-columns: 1fr; /* Idade e Altura ficam um em cima do outro */
-    }
-
-    .header-interno h1 {
-        font-size: 1.4rem; /* Diminui o título */
-    }
-    
-    #get-valor {
-        font-size: 4rem;
-    }
+.header-interno h1 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--text-dark);
 }
-/* O Estilo dos Inputs da Imagem */
+
+/* 5. INPUTS E SELETORES */
+.input-group { display: flex; flex-direction: column; gap: 8px; }
+
+.grid-duplo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
 .input-wrapper {
     background-color: #e2e8f0;
     border-radius: 12px;
@@ -114,149 +90,73 @@ main {
     width: 100%;
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--text-dark);
 }
 
-.unit {
-    color: var(--text-muted);
-    font-weight: 600;
-    font-size: 0.8rem;
-}
-
-/* PAINEL DA DIREITA (RESULTADO) */
+/* 6. PAINEL DE RESULTADO */
 #resultado {
     background-color: var(--white);
-    border-radius: 40px;
-    padding: 60px;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.03); /* Sombra ultra leve */
+    border-radius: 30px;
+    padding: 40px 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.03);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 #get-valor {
     color: var(--primary-blue);
-    font-size: 8rem; /* Gigante como na foto */
+    font-size: 4rem; /* Tamanho seguro para celular */
     font-weight: 900;
-    letter-spacing: -4px;
+    letter-spacing: -2px;
     line-height: 1;
 }
 
-.label-resultado {
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-muted);
-    font-weight: 700;
-    font-size: 0.7rem;
-    margin-bottom: 10px;
-}
-
-/* O BOTÃO AZUL */
+/* 7. BOTÃO */
 button {
     background-color: var(--primary-blue);
     color: white;
     border: none;
-    padding: 22px;
+    padding: 20px;
     border-radius: 16px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1px;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0, 97, 242, 0.2);
-    transition: all 0.3s ease;
+    transition: transform 0.2s;
 }
 
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 30px rgba(0, 97, 242, 0.3);
+button:active { transform: scale(0.98); }
+
+/* 8. MEDIA QUERIES PARA DESKTOP (A PARTIR DE 900PX) */
+@media (min-width: 900px) {
+    body { padding: 40px 0; }
+
+    .marca-topo { text-align: left; }
+
+    main {
+        grid-template-columns: 400px 1fr; /* Divide em duas colunas */
+        gap: 30px;
+    }
+
+    #formulario-saude { padding: 40px; }
+
+    #resultado {
+        padding: 60px;
+        border-radius: 40px;
+    }
+
+    #get-valor {
+        font-size: 8rem; /* Volta ao tamanho gigante no monitor */
+        letter-spacing: -4px;
+    }
 }
 
-button:active {
-    transform: translateY(2px);
-    box-shadow: 0 5px 10px rgba(0, 97, 242, 0.2);
-}
-
-/* Cabeçalho Interno */
-.header-interno h1 {
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: var(--text-dark);
-    letter-spacing: -1px;
-}
-
-.header-interno p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-}
-
-/* Organização dos Inputs */
-.input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.grid-duplo {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-/* Seletor de Gênero (Igual à imagem) */
-.gender-selector {
-    display: flex;
-    background-color: #e2e8f0;
-    padding: 5px;
-    border-radius: 12px;
-}
-
-.btn-gender {
-    flex: 1;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-    background: transparent;
-    color: var(--text-muted);
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: none; /* Remove a sombra do botão padrão */
-    text-transform: none; /* Remove o uppercase do botão padrão */
-    transition: all 0.2s ease;
-}
-
-.btn-gender:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-}
-
-.btn-gender.active {
-    background-color: var(--white);
-    color: var(--primary-blue);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transform: scale(1.02);
-}
-
-/* Ajuste do Select */
-.select-wrapper select {
-    width: 100%;
-    background-color: #e2e8f0;
-    border: none;
-    padding: 15px;
-    border-radius: 12px;
-    font-weight: 700;
-    color: var(--text-dark);
-    appearance: none; /* Remove a setinha padrão do navegador */
-}
-
+/* 9. RODAPÉ */
 footer {
-    color: black;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
+    margin-top: auto;
+    padding: 20px;
+    font-size: 0.8rem;
+    text-align: center;
 }
-
-.footer-nome {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    letter-spacing: 0.04em;
 }
