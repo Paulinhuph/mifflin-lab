@@ -7,16 +7,25 @@
     --white: #ffffff;
 }
 
+/* Estilo Base (Mobile First) */
 body {
     background-color: var(--bg-light);
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
     display: flex;
-    flex-direction: column; /* Empilha a marca e o main verticalmente */
-    align-items: center;    /* Centraliza horizontalmente */
-    padding: 40px 0;        /* Dá um respiro nas bordas superior e inferior */
+    flex-direction: column;
+    align-items: center;
+    /* No celular, reduzimos o respiro vertical e adicionamos horizontal */
+    padding: 20px 15px; 
+    overflow-x: hidden; /* Segurança contra quebras de layout lateral */
 }
 
+/* Ajuste para Desktop (Telas maiores que 900px) */
+@media (min-width: 900px) {
+    body {
+        padding: 40px 0; /* Aqui voltamos ao respiro maior que você sugeriu */
+    }
+}
 .marca-topo {
     width: 95%;
     max-width: 1100px;      /* Mesma largura do seu main para alinhar as bordas */
