@@ -1,5 +1,5 @@
 # ​⚖️ Mifflin - Lab
-​O Metabolic Architect é uma aplicação web de alta precisão projetada para o cálculo de parâmetros biométricos essenciais: a Taxa Metabólica Basal (TMB) e o Gasto Energético Total (GET).
+​O Mifflin - Lab é uma aplicação web de alta precisão projetada para o cálculo de parâmetros biométricos essenciais: a Taxa Metabólica Basal (TMB) e o Gasto Energético Total (GET).
 
 ## ​🧪 Base Científica
 ​A lógica de cálculo deste sistema utiliza a Equação de Mifflin-St Jeor, validada em 1990 e considerada o padrão-ouro para estimativas metabólicas em indivíduos saudáveis na era moderna.
