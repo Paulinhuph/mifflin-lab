@@ -26,3 +26,5 @@
 
 - ​Design Responsivo: Interface adaptável para Desktop, Tablets e Smartphones.
 ​Seletor de Gênero Dinâmico: Experiência otimizada com botões de alternância de estado.
+
+<img width="1920" height="1080" alt="Captura de Tela (30)" src="https://github.com/user-attachments/assets/192335ef-e954-41e2-b45b-657f3139c825" />
